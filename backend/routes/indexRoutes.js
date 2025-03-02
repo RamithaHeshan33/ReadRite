@@ -7,6 +7,9 @@ const router = express.Router()
 router.use('/admin', adminRoutes)
 
 
+//book routers
+router.use('/book', require('./bookRoutes'))
+
 
 
 
