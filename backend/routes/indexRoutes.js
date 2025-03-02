@@ -11,6 +11,7 @@ router.use('/admin', adminRoutes)
 router.use('/book', require('./bookRoutes'))
 
 
-
+//user routers
+router.use('/user', require('./userRoutes'))
 
 module.exports = router;
