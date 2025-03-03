@@ -3,7 +3,14 @@ import './AdminLogin.css';
 
 function Userlogin() {
   return (
-    <div className="login">
+    <div className="login"
+      style={{
+        backgroundImage: "url('../background/adminlog.png')", // Change to your image path
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+        backgroundRepeat: "no-repeat",
+      }}
+    >
       <div className="loginform">
         {/* Left Section */}
         <div className='left w-1/2 text-center'>

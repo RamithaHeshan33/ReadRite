@@ -2,7 +2,14 @@ import React from 'react';
 
 function UserRegister() {
   return (
-    <div className="login">
+    <div className="login"
+      style={{
+        backgroundImage: "url('../background/adminreg.png')",
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+        backgroundRepeat: "no-repeat",
+      }}
+    >
       <div className="loginform">
         {/* Left Section */}
         <div className='left w-1/2 flex justify-center'>
@@ -23,7 +30,7 @@ function UserRegister() {
               Login
             </button>
 
-            <p className='mt-5 text-xl'>Already have an account? <a href='/admin/login' className='text-blue-500'>Login</a></p>
+            <p className='mt-5 text-xl'>Already have an account? <a href='/user/login' className='text-blue-500'>Login</a></p>
 
           </form>
         </div>

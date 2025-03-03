@@ -6,6 +6,8 @@ import AdminRegister from './Components/Register/AdminRegister'
 import Userlogin from './Components/Login/UserLogin'
 import UserRegister from './Components/Register/UserRegister'
 
+import AdminHome from './Components/Admin/Home'
+
 function App() {
 
   return (
@@ -17,6 +19,8 @@ function App() {
 
         <Route path="/user/login" element={<Userlogin />} />
         <Route path="/user/register" element={<UserRegister />} />
+
+        <Route path="/admin/home" element={<AdminHome />} />
 
       </Routes>
     </div>

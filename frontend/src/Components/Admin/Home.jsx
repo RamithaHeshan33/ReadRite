@@ -1,13 +1,12 @@
 import React from 'react'
-import './Home.css'
-import Navbar from '../Navbar/Navbar'
+import Navbar from '../Navbar/AdminAfterLogin'
 import Footer from '../Footer/Footer'
 
-function Home() {
+function AdminHome() {
   return (
     <div className="App h-screen flex flex-col"
       style={{
-        backgroundImage: "url('./background/home.png')",
+        backgroundImage: "url('../background/home.png')",
         backgroundSize: "cover",
         backgroundPosition: "center",
         backgroundRepeat: "no-repeat",
@@ -25,7 +24,7 @@ function Home() {
         </div>
 
         <div className='right'>
-          <img src="imgs/home.png" alt="" />
+          <img src="../imgs/home.png" alt="" />
         </div>
       </div>
 
@@ -36,4 +35,4 @@ function Home() {
   )
 }
 
-export default Home
+export default AdminHome

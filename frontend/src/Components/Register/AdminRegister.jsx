@@ -2,7 +2,14 @@ import React from 'react';
 
 function AdminRegister() {
   return (
-    <div className="login">
+    <div className="login"
+      style={{
+        backgroundImage: "url('../background/adminreg.png')",
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+        backgroundRepeat: "no-repeat",
+      }}
+    >
       <div className="loginform">
         {/* Left Section */}
         <div className='left w-1/2 flex justify-center'>
