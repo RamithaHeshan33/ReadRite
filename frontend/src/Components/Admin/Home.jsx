@@ -1,8 +1,19 @@
-import React from 'react'
+import React, {useEffect} from 'react'
+import {useNavigate} from 'react-router-dom'
 import Navbar from '../Navbar/AdminAfterLogin'
 import Footer from '../Footer/Footer'
 
 function AdminHome() {
+  const navigate = useNavigate()
+
+  useEffect(() => {
+    const token = localStorage.getItem('adminToken')
+
+    if(!token) {
+      navigate('/admin/login')
+    }
+  }, [navigate])
+
   return (
     <div className="App h-screen flex flex-col"
       style={{

@@ -1,10 +1,13 @@
 const express = require('express');
 const mongoose = require('mongoose');
+const cors = require('cors');
 const indexRoutes = require('./routes/indexRoutes');
 const app = express();
 
+
 //middleware
 app.use(express.json());
+app.use(cors());
 app.use('/', indexRoutes);
 
 //connect to db

@@ -7,6 +7,7 @@ import Userlogin from './Components/Login/UserLogin'
 import UserRegister from './Components/Register/UserRegister'
 
 import AdminHome from './Components/Admin/Home'
+import Logout from './Components/Admin/Logout'
 
 function App() {
 
@@ -20,6 +21,7 @@ function App() {
         <Route path="/user/login" element={<Userlogin />} />
         <Route path="/user/register" element={<UserRegister />} />
 
+        <Route path="/admin/logout" element={<Logout />} />
         <Route path="/admin/home" element={<AdminHome />} />
 
       </Routes>

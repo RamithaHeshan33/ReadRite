@@ -31,6 +31,9 @@ function Navbar() {
           <li>
             <a href="/admin/delete" className="text-gray-600 hover:text-gray-800 font-bold uppercase">Delete</a>
           </li>
+          <li>
+            <a href="/admin/logout" className="text-gray-600 hover:text-gray-800 font-bold uppercase">Logout</a>
+          </li>
         </ul>
       </nav>
     </div>
