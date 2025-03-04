@@ -89,43 +89,48 @@ const addBook = async (req, res) => {
 exports.addBook = [upload.single('bookImage'), addBook];
 
 const updateBook = async (req, res) => {
-    const {id} = req.params;
-    const {bookName, authorName, supplierName, bookPrice, bookImage, bookDescription} = req.body;
+    const { id } = req.params;
+    const { bookName, authorName, supplierName, bookPrice, bookDescription } = req.body;
     let book;
 
     try {
-        book = await bookModel.findByIdAndUpdate(id);
-    }
+        book = await bookModel.findByIdAndUpdate(
+            id,
+            { bookName, authorName, supplierName, bookPrice, bookDescription },
+            { new: true }
+        );
 
-    catch(err) {
+        if (!book) {
+            return res.status(404).json({ message: 'Book not found' });
+        }
+
+        return res.status(200).json(book);
+    } catch (err) {
         console.log(err);
+        return res.status(500).json({ message: 'Server error' });
     }
-
-    if (!book) {
-        return res.status(404).json({ message: 'Book not found' });
-    }
-    return res.status(200).json(book);
-}
+};
 
 exports.updateBook = updateBook;
 
 
+
 const deleteBook = async (req, res) => {
-    const {id} = req.params;
-    let book;
+    const { id } = req.params;
 
     try {
-        book = bookModel.findByIdAndDelete(id);
-    }
+        const book = await bookModel.findByIdAndDelete(id);
 
-    catch(err) {
+        if (!book) {
+            return res.status(404).json({ message: 'Book not found' });
+        }
+
+        return res.status(200).json({ message: 'Book deleted successfully' });
+    } catch (err) {
         console.log(err);
+        return res.status(500).json({ message: 'Server error' });
     }
-
-    if (!book) {
-        return res.status(404).json({ message: 'Book not found' });
-    }
-    return res.status(200).json({ message: 'Book deleted' });
-}
+};
 
 exports.deleteBook = deleteBook;
+

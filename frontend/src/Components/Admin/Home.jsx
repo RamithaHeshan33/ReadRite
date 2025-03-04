@@ -2,6 +2,7 @@ import React, {useEffect} from 'react'
 import {useNavigate} from 'react-router-dom'
 import Navbar from '../Navbar/AdminAfterLogin'
 import Footer from '../Footer/Footer'
+import { motion } from 'framer-motion'
 
 function AdminHome() {
   const navigate = useNavigate()
@@ -26,12 +27,21 @@ function AdminHome() {
       <Navbar />
 
       <div className="flex h-150 mt-5 ml-20 mr-20 items-center">
-        <div className='left'>
+      <motion.div 
+            className="left"
+            initial={{ opacity: 0, x: -50 }}
+            animate={{ opacity: 1, x: 0 }}
+            exit={{ opacity: 0, x: 50 }}   
+            transition={{ duration: 0.5 }}
+        >
           <h2 className='text-5xl font-bold text-center'>Discover, Review, and Share Your Favorite Books</h2>
 
           <p className='text-3xl mt-5 ml-10 mr-5'>ReadRite is a platform where you can discover new books, review them, and share your thoughts with the world. You can also see what other people are reading and what they think about the books they have read.</p>
         
-          <button className='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-5 ml-10 mr-5 cursor-pointer'>ADD BOOK</button>
+          <button className='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-5 ml-10 mr-5 cursor-pointer' onClick={() => navigate('/admin/add')}>Add Book</button>
+        </motion.div>
+        <div className='left' >
+          
         </div>
 
         <div className='right'>
