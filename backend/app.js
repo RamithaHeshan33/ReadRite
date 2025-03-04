@@ -6,6 +6,8 @@ const app = express();
 
 
 //middleware
+app.use('/uploads', express.static('uploads')); //make uploads folder public
+
 app.use(express.json());
 app.use(cors());
 app.use('/', indexRoutes);

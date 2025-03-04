@@ -1,12 +1,22 @@
-import React, {useState} from 'react'
+import React, {useEffect, useState} from 'react'
 import Navbar from '../Navbar/AdminAfterLogin'
 import Footer from '../Footer/Footer'
 import './Add.css'
 import axios from 'axios'
+import { useNavigate } from 'react-router-dom'
 
 const URL = 'http://localhost:5000/book'
 
 function Add() {
+    const navigate = useNavigate();
+
+    useEffect(() => {
+        const token = localStorage.getItem('adminToken');
+        if (!token) {
+            navigate('/admin/login');
+        }
+    })
+
     const [book, setBook] = useState({
         bookName: '',
         authorName: '',
@@ -89,27 +99,27 @@ function Add() {
                     <form onSubmit={handleSubmit}>
                         <div className="form-group">
                             <label htmlFor="title">Title</label>
-                            <input type="text" name="bookName" id="title" className="form-control" placeholder='Enter the title of the book' value={book.bookName} onChange={handleChange} />
+                            <input type="text" name="bookName" id="title" className="form-control" placeholder='Enter the title of the book' value={book.bookName} onChange={handleChange} required />
                         </div>
                         <div className="form-group">
                             <label htmlFor="author">Author</label>
-                            <input type="text" name="authorName" id="author" className="form-control" placeholder='Enter the author of the book' value={book.authorName} onChange={handleChange} />
+                            <input type="text" name="authorName" id="author" className="form-control" placeholder='Enter the author of the book' value={book.authorName} onChange={handleChange} required/>
                         </div>
                         <div className="form-group">
                             <label htmlFor="genre">Supplier</label>
-                            <input type="text" name="supplierName" id="supplier" className="form-control" placeholder='Enter the supplier of the book' value={book.supplierName} onChange={handleChange} />
+                            <input type="text" name="supplierName" id="supplier" className="form-control" placeholder='Enter the supplier of the book' value={book.supplierName} onChange={handleChange} required/>
                         </div>
                         <div className="form-group">
                             <label htmlFor="genre">Price</label>
-                            <input type="number" name="bookPrice" id="price" className="form-control" placeholder='Enter the price of the book' value={book.bookPrice} onChange={handleChange} />
+                            <input type="number" name="bookPrice" id="price" className="form-control" placeholder='Enter the price of the book' value={book.bookPrice} onChange={handleChange} required/>
                         </div>
                         <div className="form-group">
                             <label htmlFor="description">Description</label>
-                            <textarea name="bookDescription" id="description" className="form-control" placeholder='Enter the description of the book' value={book.bookDescription} onChange={handleChange} />
+                            <textarea name="bookDescription" id="description" className="form-control" placeholder='Enter the description of the book' value={book.bookDescription} onChange={handleChange} required/>
                         </div>
                         <div className="form-group">
                             <label htmlFor="image">Image</label>
-                            <input type="file" name="bookImage" id="image" className="form-control" onChange={handleImage} />
+                            <input type="file" name="bookImage" id="image" className="form-control" onChange={handleImage} required/>
                         </div>
                         <div className="form-group">
                             <button className="w-full bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-5 cursor-pointer">Add Book</button>
