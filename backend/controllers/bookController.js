@@ -50,43 +50,39 @@ const getBookByID = async (req, res) => {
 exports.getBookByID = getBookByID;
 
 const addBook = async (req, res) => {
-    const { bookName, authorName, supplierName, bookPrice, bookImage, bookDescription } = req.body;
-    let image = req.file ? req.file.path : '';
+    const { bookName, authorName, supplierName, bookPrice, bookDescription } = req.body;
+    let bookImage = req.file ? req.file.path : ''; // Fix: Get uploaded image path
 
-    let newBook = new bookModel({
-        bookName,
-        authorName,
-        supplierName,
-        bookPrice,
-        bookImage,
-        bookDescription
-    });
-
-    if (!bookName || !authorName || !supplierName || !bookPrice || !bookImage || !bookDescription) {
+    // Validate inputs before proceeding
+    if (!bookName || !authorName || !supplierName || !bookPrice || !bookDescription) {
         return res.status(400).json({ message: 'Please enter all fields' });
     }
 
-    if (isNaN(bookPrice)) {
-        return res.status(400).json({ message: 'Please enter a valid price' });
-    }
-
-    if (bookPrice <= 0) {
+    if (isNaN(bookPrice) || bookPrice <= 0) {
         return res.status(400).json({ message: 'Please enter a valid price' });
     }
 
     try {
+        // Create book after validation
+        let newBook = new bookModel({
+            bookName,
+            authorName,
+            supplierName,
+            bookPrice,
+            bookImage, // Fix: Use the correct image variable
+            bookDescription
+        });
+
         await newBook.save();
         return res.status(201).json(newBook);
-    }
-
-    catch(err) {
-        console.log(err);
+    } catch (err) {
+        console.error(err);
         res.status(500).json({ message: 'Server error' });
     }
-
-}
+};
 
 exports.addBook = [upload.single('bookImage'), addBook];
+
 
 const updateBook = async (req, res) => {
     const { id } = req.params;
