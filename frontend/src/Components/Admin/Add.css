@@ -1,4 +1,4 @@
-.right-side input[type=text], input[type=number], input[type=date], input[type=file], select, input[type=password], input[type=email], textarea {
+.right-side input[type=text], .right-side input[type=number], .right-side input[type=date], .right-side input[type=file], .right-side select, .right-side input[type=password], .right-side input[type=email], .right-side textarea {
     width: 100%;
     padding: 8px 20px;
     margin: 3px 0;

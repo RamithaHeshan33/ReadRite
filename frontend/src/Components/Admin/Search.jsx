@@ -14,7 +14,7 @@ function Search() {
     if (!token) {
       navigate('/admin/login');
     }
-  }, []); // ✅ Fixed: Added dependency array
+  });
 
   const [books, setBooks] = useState([]);
   const [search, setSearch] = useState('');

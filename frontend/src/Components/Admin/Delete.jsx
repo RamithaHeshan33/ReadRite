@@ -1,8 +1,22 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import Navbar from '../Navbar/AdminAfterLogin'
 import Footer from '../Footer/Footer'
+import axios from 'axios'
+import { useNavigate } from 'react-router-dom'
+
+const URL = 'http://localhost:5000/book'
 
 function Delete() {
+
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const token = localStorage.getItem('adminToken');
+    if (!token) {
+      navigate('/admin/login');
+    }
+  })
+
   return (
     <div className="App h-screen flex flex-col"
         style={{

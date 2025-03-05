@@ -87,27 +87,37 @@ exports.addBook = [upload.single('bookImage'), addBook];
 const updateBook = async (req, res) => {
     const { id } = req.params;
     const { bookName, authorName, supplierName, bookPrice, bookDescription } = req.body;
-    let book;
-
+    
     try {
-        book = await bookModel.findByIdAndUpdate(
-            id,
-            { bookName, authorName, supplierName, bookPrice, bookDescription },
-            { new: true }
-        );
-
+        // Find the existing book
+        let book = await bookModel.findById(id);
         if (!book) {
             return res.status(404).json({ message: 'Book not found' });
         }
 
+        // If a new image is uploaded, update the image path
+        let bookImage = book.bookImage; // Keep existing image
+        if (req.file) {
+            bookImage = req.file.path; // Update with new image
+        }
+
+        // Update book details
+        book = await bookModel.findByIdAndUpdate(
+            id,
+            { bookName, authorName, supplierName, bookPrice, bookDescription, bookImage },
+            { new: true }
+        );
+
         return res.status(200).json(book);
     } catch (err) {
-        console.log(err);
+        console.error(err);
         return res.status(500).json({ message: 'Server error' });
     }
 };
 
-exports.updateBook = updateBook;
+// Export the function with `multer` middleware for image uploads
+exports.updateBook = [upload.single('bookImage'), updateBook];
+
 
 
 
