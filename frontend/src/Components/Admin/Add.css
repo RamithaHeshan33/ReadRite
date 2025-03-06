@@ -13,3 +13,7 @@
 .right-side {
     width: 675px;
 }
+
+.scroll-hide::-webkit-scrollbar {
+  display: none;
+}

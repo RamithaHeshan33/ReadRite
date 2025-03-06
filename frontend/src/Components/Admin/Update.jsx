@@ -89,12 +89,11 @@ function Update() {
       </div>
       <div className='flex flex-wrap justify-center mt-8 gap-5'>
         {filteredBooks.map((b) => (
-          <div key={b._id} className="card border-2 border-blue-700 w-75 h-120 rounded-lg">
+          <div key={b._id} className="card border-2 border-blue-700 w-75 h-115 rounded-lg">
             <img src={`http://localhost:5000/${b.bookImage}`} alt={b.bookName} className='w-full h-70 object-cover' />
             <h3 className='text-xl font-bold text-center mt-2'>{b.bookName}</h3>
             <p className='text-center mt-2'>Author: {b.authorName}</p>
             <p className='text-center mt-2'>Price: {b.bookPrice}</p>
-            <p className='text-center mt-2'>Supplier: {b.supplierName}</p>
             <div className='flex justify-center mt-4'>
               <button onClick={() => handleUpdateClick(b)} className='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded'>Update</button>
             </div>

@@ -70,26 +70,29 @@ function Search() {
         </button>
       </div>
 
-      <div className="flex flex-wrap justify-center mt-8 gap-5">
-        {filteredBooks.length > 0 ? (
-          filteredBooks.map((book) => (
-            <div key={book._id} className="card border-2 border-blue-700 w-75 h-95 rounded-lg">
-              <img
-                src={`http://localhost:5000/${book.bookImage.replace(/\\/g, '/')}`} // ✅ Fix: Convert `\` to `/`
-                alt={book.bookName}
-                className="w-full h-70 object-cover"
-                onError={(e) => { e.target.src = "https://via.placeholder.com/150"; }} // ✅ Fallback image
-              />
+      <div className="card-container h-100 overflow-y-auto mt-8 scroll-hide">
+        <div className="flex flex-wrap justify-center mt-8 gap-5">
+          {filteredBooks.length > 0 ? (
+            filteredBooks.map((book) => (
+              <div key={book._id} className="card border-2 border-blue-700 w-75 h-95 rounded-lg">
+                <img
+                  src={`http://localhost:5000/${book.bookImage.replace(/\\/g, '/')}`} // ✅ Fix: Convert `\` to `/`
+                  alt={book.bookName}
+                  className="w-full h-70 object-cover"
+                  onError={(e) => { e.target.src = "https://via.placeholder.com/150"; }} // ✅ Fallback image
+                />
 
-              <h2 className="text-xl font-bold mt-2 pl-2 pr-2 text-center">{book.bookName}</h2>
-              <p className='pl-2 pr-2 text-center'>Author: {book.authorName}</p>
-              <p className='pl-2 pr-2 text-center'>Price: ${book.bookPrice}</p>
-            </div>
-          ))
-        ) : (
-          <p className="text-center text-red-500 mt-4">No books available</p>
-        )}
+                <h2 className="text-xl font-bold mt-2 pl-2 pr-2 text-center">{book.bookName}</h2>
+                <p className='pl-2 pr-2 text-center'>Author: {book.authorName}</p>
+                <p className='pl-2 pr-2 text-center'>Price: ${book.bookPrice}</p>
+              </div>
+            ))
+          ) : (
+            <p className="text-center text-red-500 mt-4">No books available</p>
+          )}
+        </div>
       </div>
+      
 
       <div style={{ marginTop: 'auto' }}>
         <Footer />
