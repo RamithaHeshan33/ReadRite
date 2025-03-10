@@ -17,6 +17,7 @@ import Logout from './Components/Admin/Logout'
 
 import UserHome from './Components/User/Home'
 import UserRate from './Components/User/Rate'
+import UserBookRate from './Components/User/RateBook'
 import UserLogout from './Components/User/Logout'
 
 function App() {
@@ -42,6 +43,7 @@ function App() {
                 <Route path="/user/logout" element={<UserLogout />} />
                 <Route path="/user/home" element={<UserHome />} />
                 <Route path="/user/rate" element={<UserRate />} />
+                <Route path="/user/rate/:id" element={<UserBookRate />} />
             </Routes>
         </AnimatePresence>
     )
