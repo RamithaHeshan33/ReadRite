@@ -15,6 +15,10 @@ import AdminUpdate from './Components/Admin/Update'
 import AdminDelete from './Components/Admin/Delete'
 import Logout from './Components/Admin/Logout'
 
+import UserHome from './Components/User/Home'
+import UserRate from './Components/User/Rate'
+import UserLogout from './Components/User/Logout'
+
 function App() {
     const location = useLocation(); // Track the current page
 
@@ -34,6 +38,10 @@ function App() {
                 <Route path="/admin/update" element={<AdminUpdate />} />
                 <Route path="/admin/delete" element={<AdminDelete />} />
                 <Route path="/admin/search" element={<AdminSearch />} />
+
+                <Route path="/user/logout" element={<UserLogout />} />
+                <Route path="/user/home" element={<UserHome />} />
+                <Route path="/user/rate" element={<UserRate />} />
             </Routes>
         </AnimatePresence>
     )
