@@ -14,4 +14,8 @@ router.use('/book', require('./bookRoutes'))
 //user routers
 router.use('/user', require('./userRoutes'))
 
+
+//rate routers
+router.use('/rate', require('./rateRoutes'))
+
 module.exports = router;
