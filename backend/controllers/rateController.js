@@ -54,7 +54,7 @@ const getRateByBookID = async (req, res) => {
     const { bookId } = req.params;
 
     try {
-        const rates = await RateModel.find({ bookId });
+        const rates = await RateModel.find({ bookId }).populate("userId", "name");
 
         if (!rates || rates.length === 0) {
             return res.status(404).json({
