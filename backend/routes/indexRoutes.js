@@ -3,6 +3,11 @@ const adminRoutes = require('./adminRoutes')
 
 const router = express.Router()
 
+//middleware
+router.get('/', (req, res) => {
+    res.send('Welcome to ReadRite');
+})
+
 //admin routers
 router.use('/admin', adminRoutes)
 

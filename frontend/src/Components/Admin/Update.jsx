@@ -25,7 +25,7 @@ function Update() {
     const fetchBooks = async () => {
       try {
         const response = await axios.get(URL);
-        setBook(response.data);
+        setBook(response.data.books);
       } catch (error) {
         console.error(error);
       }

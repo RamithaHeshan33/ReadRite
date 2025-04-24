@@ -24,7 +24,7 @@ function Search() {
       try {
         const response = await axios.get(URL);
         console.log('API Response: ', response.data);
-        setBooks(response.data);
+        setBooks(response.data.books);
       } catch (error) {
         console.error(error);
       }
