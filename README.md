@@ -8,7 +8,8 @@ ReadRite is a **MERN stack** web application designed for book enthusiasts to **
 - **Backend:** Node.js, Express.js
 - **Database:** MongoDB
 - **Authentication:** JWT
-- **Containerization & Deployment:** Docker (In Progress), AWS, Kubernetes (Upcoming)
+- **Containerization & Deployment:** Docker
+- AWS, Kubernetes (Upcoming)
 
 ## 🎯 Features
 - ✅ User Authentication (JWT-based login & signup)
